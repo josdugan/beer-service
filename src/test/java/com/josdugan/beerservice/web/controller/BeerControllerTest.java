@@ -2,12 +2,14 @@ package com.josdugan.beerservice.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.josdugan.beerservice.web.model.BeerDto;
+import com.josdugan.beerservice.web.model.BeerStyle;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +35,13 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        BeerDto beerDto = BeerDto.builder().build();
+        BeerDto beerDto = BeerDto.builder()
+                .beerName("Guiness Draught")
+                .beerStyle(BeerStyle.STOUT)
+                .upc(1234567890L)
+                .price(BigDecimal.ONE)
+                .quantityOnHand(150)
+                .build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         mockMvc.perform((post(BASE_URL)
@@ -44,7 +52,13 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
-        BeerDto beerDto = BeerDto.builder().build();
+        BeerDto beerDto = BeerDto.builder()
+                .beerName("Guiness Draught")
+                .beerStyle(BeerStyle.STOUT)
+                .upc(1234567891L)
+                .price(BigDecimal.ONE)
+                .quantityOnHand(150)
+                .build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         mockMvc.perform(put(BASE_URL + UUID.randomUUID().toString())
