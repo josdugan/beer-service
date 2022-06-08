@@ -2,31 +2,29 @@ package com.josdugan.beerservice.bootstrap;
 
 import com.josdugan.beerservice.domain.Beer;
 import com.josdugan.beerservice.repositories.BeerRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-//@Component
+@RequiredArgsConstructor
+@Component
 public class BeerLoader implements CommandLineRunner {
 
     public static final String BEER_1_UPC = "012345678911";
     public static final String BEER_2_UPC = "012345678922";
     public static final String BEER_3_UPC = "012345678933";
-    public static final UUID BEER_1_UUID = UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb");
-    public static final UUID BEER_2_UUID = UUID.fromString("a712d914-61ea-4623-8bd0-32c0f6545bfd");
-    public static final UUID BEER_3_UUID = UUID.fromString("026cc3c8-3a0c-4083-a05b-e908048c1b08");
 
     private final BeerRepository beerRepository;
 
-    public BeerLoader(BeerRepository beerRepository) {
-        this.beerRepository = beerRepository;
-    }
-
     @Override
     public void run(String... args) throws Exception {
-        loadBeerObjects();
+        if (beerRepository.count() == 0) {
+            loadBeerObjects();
+        }
+
     }
 
     private void loadBeerObjects() {
