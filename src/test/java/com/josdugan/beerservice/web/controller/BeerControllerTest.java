@@ -3,8 +3,7 @@ package com.josdugan.beerservice.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.josdugan.beerservice.bootstrap.BeerLoader;
 import com.josdugan.beerservice.services.BeerService;
-import com.josdugan.beerservice.web.model.BeerDto;
-import com.josdugan.beerservice.web.model.BeerStyle;
+import com.josdugan.beerworkscommon.dtos.BeerDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -72,7 +71,7 @@ class BeerControllerTest {
     private BeerDto getValidBeerDto() {
         return BeerDto.builder()
                 .beerName("Guiness Draught")
-                .beerStyle(BeerStyle.STOUT)
+                .beerStyle("STOUT")
                 .upc(BeerLoader.BEER_1_UPC)
                 .price(BigDecimal.ONE)
                 .quantityOnHand(150)

@@ -4,9 +4,9 @@ import com.josdugan.beerservice.domain.Beer;
 import com.josdugan.beerservice.mappers.BeerMapper;
 import com.josdugan.beerservice.repositories.BeerRepository;
 import com.josdugan.beerservice.web.controller.NotFoundException;
-import com.josdugan.beerservice.web.model.BeerDto;
 import com.josdugan.beerservice.web.model.BeerPagedList;
 import com.josdugan.beerservice.web.model.BeerStyle;
+import com.josdugan.beerworkscommon.dtos.BeerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -55,7 +55,7 @@ public class BeerServiceImpl implements BeerService {
     public BeerDto updateBeer(UUID beerId, BeerDto beerDto) {
         Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
         beer.setBeerName(beerDto.getBeerName());
-        beer.setBeerStyle(beerDto.getBeerStyle().name());
+        beer.setBeerStyle(beerDto.getBeerStyle());
         beer.setPrice(beerDto.getPrice());
         beer.setUpc(beerDto.getUpc());
 

@@ -1,8 +1,8 @@
 package com.josdugan.beerservice.services;
 
-import com.josdugan.beerservice.web.model.BeerDto;
 import com.josdugan.beerservice.web.model.BeerPagedList;
 import com.josdugan.beerservice.web.model.BeerStyle;
+import com.josdugan.beerworkscommon.dtos.BeerDto;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.UUID;

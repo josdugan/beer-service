@@ -1,4 +1,4 @@
-name: build-beerservice
+name: build
 
 on:
   push:

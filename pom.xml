@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.josdugan</groupId>
 		<artifactId>brewery-bom</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.6-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.josdugan</groupId>
 	<artifactId>beer-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Beer Service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -40,7 +40,7 @@
 		</repository>
 		<repository>
 			<id>github</id>
-			<url>https://maven.pkg.github.com/josdugan/brewery-bom</url>
+			<url>https://maven.pkg.github.com/josdugan/*</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>

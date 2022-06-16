@@ -1,9 +1,9 @@
 package com.josdugan.beerservice.web.controller;
 
 import com.josdugan.beerservice.services.BeerService;
-import com.josdugan.beerservice.web.model.BeerDto;
 import com.josdugan.beerservice.web.model.BeerPagedList;
 import com.josdugan.beerservice.web.model.BeerStyle;
+import com.josdugan.beerworkscommon.dtos.BeerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
