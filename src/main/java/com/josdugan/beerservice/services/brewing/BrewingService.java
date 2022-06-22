@@ -1,11 +1,11 @@
 package com.josdugan.beerservice.services.brewing;
 
-import com.josdugan.beerservice.config.JmsConfig;
 import com.josdugan.beerservice.domain.Beer;
 import com.josdugan.beerservice.events.BrewBeerEvent;
 import com.josdugan.beerservice.mappers.BeerMapper;
 import com.josdugan.beerservice.repositories.BeerRepository;
 import com.josdugan.beerservice.services.inventory.BeerInventoryService;
+import com.josdugan.beerworkscommon.constants.MessageQueues;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
@@ -35,7 +35,7 @@ public class BrewingService {
             log.debug("Inventory is: " + invQoh);
 
             if (beer.getMinOnHand() >= invQoh) {
-                jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
+                jmsTemplate.convertAndSend(MessageQueues.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }
         });
     }

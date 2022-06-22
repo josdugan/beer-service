@@ -1,9 +1,9 @@
 package com.josdugan.beerservice.services.brewing;
 
-import com.josdugan.beerservice.config.JmsConfig;
 import com.josdugan.beerservice.domain.Beer;
 import com.josdugan.beerservice.events.BrewBeerEvent;
 import com.josdugan.beerservice.repositories.BeerRepository;
+import com.josdugan.beerworkscommon.constants.MessageQueues;
 import com.josdugan.beerworkscommon.dtos.BeerDto;
 import com.josdugan.beerworkscommon.events.NewInventoryEvent;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class BrewBeerListener {
     private final JmsTemplate jmsTemplate;
 
     @Transactional
-    @JmsListener(destination = JmsConfig.BREWING_REQUEST_QUEUE)
+    @JmsListener(destination = MessageQueues.BREWING_REQUEST_QUEUE)
     public void listen(BrewBeerEvent event) {
         BeerDto beerDto = event.getBeerDto();
 
@@ -35,6 +35,6 @@ public class BrewBeerListener {
 
         log.debug("Brewed beer " + beer.getMinOnHand() + " : QOH: " + beerDto.getQuantityOnHand());
 
-        jmsTemplate.convertAndSend(JmsConfig.NEW_INVENTORY_QUEUE, newInventoryEvent);
+        jmsTemplate.convertAndSend(MessageQueues.NEW_INVENTORY_QUEUE, newInventoryEvent);
     }
 }
