@@ -1,6 +1,6 @@
 package com.josdugan.beerservice.services.inventory;
 
-import com.josdugan.beerservice.services.inventory.model.BeerInventoryDto;
+import com.josdugan.beerworkscommon.dtos.BeerInventoryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
