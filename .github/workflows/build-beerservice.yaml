@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,6 +15,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
-      - run: mvn clean package
+      - run: mvn package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
